@@ -345,7 +345,7 @@ const canvas = document.createElement("canvas");
 const gl = canvas.getContext("webgl2");
 
 document.title = "🤖";
-document.body.innerHTML = "<div style='background-color: transparent; position:absolute; top:50%;left:50%;top:50%;transform:translate(-50%, -50%);color:lavender;font-size:25px;justify-content:center;text-align:center;'><b>Copy URL of this page and embed in compatible  Farcaster client.<br>The simplest way: <a href='https://getconverse.app/'' target='_blank'>Converse</a></b></div>";
+document.body.innerHTML = "<div style='background-color: transparent; position:absolute; top:50%;left:50%;top:50%;transform:translate(-50%, -50%);color:lavender;font-size:25px;justify-content:center;text-align:center;'><b>Embed URL of this page in compatible Farcaster client.<br>The simplest way: <a href='https://getconverse.app/'' target='_blank'>Converse</a></b></div>";
 document.body.appendChild(canvas);
 document.body.style = "margin:0;touch-action:none;overflow:hidden";
 canvas.style.width = "100%";
