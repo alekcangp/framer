@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const crypto = require('crypto');
 
-const post_url = "https://perfect-rat-60.telebit.io/";
+const post_url = "https://framer.loophole.site/"
 const img_url = "https://i.imgur.com/oLhw7FR.gif";
 const rimg = "https://source.unsplash.com/random/1000x523"; //random image
 var uid = "";
