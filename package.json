@@ -1,16 +1,14 @@
 {
-    "name": "Framer",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "Alex",
-    "license": "MIT",
-    "dependencies": {
-      "node": "^18.1.0"
-    },
-    "description": ""
+  "name": "Framer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alex",
+  "license": "MIT",
+  "engines": {
+    "node": "*"
   }
-  
+}
