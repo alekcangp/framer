@@ -25,7 +25,7 @@ const server = http.createServer(async (req, res) => {
   } else if (req.url === "/bg") {
     await parseReq(req, "ini");
     res.writeHead(200, { co });
-    const frame = constructor( img_url, "Enter image's URL (<10 MB, jpg, png or gif)", "Back", "post", "", "Continue", "post", "l1", "", "", "", "", "", "", "", );
+    const frame = constructor( img_url, "Enter image's or empty for random", "Back", "post", "", "Continue", "post", "l1", "", "", "", "", "", "", "", );
     res.end(frame);
 
   // label 1
