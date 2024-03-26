@@ -6,12 +6,20 @@ const img_url = "https://i.imgur.com/oLhw7FR.gif";
 const rimg = "https://source.unsplash.com/random/1000x523"; //random image
 var uid = "";
 var addr = "0x";
-const obj = { "0x": { bg: img_url } };
+var obj = { "0x": { bg: img_url } };
+var obf = {};
 const sc = "<script src='https://cdn.jsdelivr.net/gh/alekcangp/framer@adbf05c301252433fe6b6dc9bbde3f2d737fcaa1/relaxing.js'></script>";
 const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Cache-Control": "no-cache, no-store, must-revalidate"';
 
-let data = fs.readFileSync("obf.txt", { encoding: "utf8", flag: "r" });
-var obf = JSON.parse(data);
+try {
+    let data = fs.readFileSync("obf.txt", { encoding: "utf8", flag: "r" });
+    obf = JSON.parse(data);
+} catch(e) {
+    var writeStream = fs.createWriteStream("obf.txt");
+    writeStream.write("{}");
+    writeStream.end();
+}
+
 
 const server = http.createServer(async (req, res) => {
 
