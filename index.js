@@ -1,7 +1,8 @@
 const http = require("http");
 const fs = require("fs");
+const crypto = require('crypto');
 
-const post_url = "https://2c8958d7-f8e4-4b3e-919b-6f3b4c6c5c65-00-ks9vta2iufpo.picard.replit.dev/";
+const post_url = "https://perfect-rat-60.telebit.io/";
 const img_url = "https://i.imgur.com/oLhw7FR.gif";
 const rimg = "https://source.unsplash.com/random/1000x523"; //random image
 var uid = "";
@@ -9,7 +10,7 @@ var addr = "0x";
 var obj = { "0x": { bg: img_url } };
 var obf = {};
 const sc = "<script src='https://cdn.jsdelivr.net/gh/alekcangp/framer@adbf05c301252433fe6b6dc9bbde3f2d737fcaa1/relaxing.js'></script>";
-const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Cache-Control": "no-cache, no-store, must-revalidate"';
+const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Cache-Control": "no-cache, no-store, must-revalidate","Access-Control-Allow-Methods": "POST, GET, OPTIONS"';
 
 try {
     let data = fs.readFileSync("obf.txt", { encoding: "utf8", flag: "r" });
@@ -31,7 +32,6 @@ const server = http.createServer(async (req, res) => {
 
   // bg url
   } else if (req.url === "/bg") {
-    await parseReq(req, "ini");
     res.writeHead(200, { co });
     const frame = constructor( img_url, "Enter image's or empty for random", "Back", "post", "", "Continue", "post", "l1", "", "", "", "", "", "", "", );
     res.end(frame);
@@ -152,8 +152,6 @@ function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4,
   frame = `
     <html>
        <head>  
-       <meta http-equiv="Access-Control-Allow-Origin" content="*">
-       <meta http-equiv="Access-Control-Allow-Headers" content="Origin, X-Requested-With, Content-Type, Accept">
             <meta property="og:image" content="${img}">
             <meta property="of:accepts:xmtp" content="2024-02-01">
             <meta property="fc:frame" content="vNext">
