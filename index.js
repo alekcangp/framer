@@ -138,9 +138,11 @@ function parseReq(req, p) {
 
         // set uuid and save
         if (p == "t4") {
-          uid = uuid(); 
-          obf[uid] = obj[addr]; 
-          obf[uid].ad = addr; fs.writeFileSync("storage.txt", JSON.stringify(obf)); }
+            uid = crypto.randomUUID();
+            obf[uid] = obj[addr]; 
+            obf[uid].ad = addr; fs.writeFileSync("storage.txt", JSON.stringify(obf)); 
+         
+          }
 
        
       } catch (e) {
@@ -199,9 +201,6 @@ function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4,
   return f;
 }
 
-function uuid() {
-  return crypto.randomUUID();
-}
 
 server.listen(3000, () => {
   console.log("Server running on port 3000");
