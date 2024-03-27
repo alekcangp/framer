@@ -13,10 +13,10 @@ const sc = "<script src='https://cdn.jsdelivr.net/gh/alekcangp/framer@adbf05c301
 const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Access-Control-Allow-Methods": "POST, GET, OPTIONS"';
 
 try {
-    let data = fs.readFileSync("obf.txt", { encoding: "utf8", flag: "r" });
+    let data = fs.readFileSync("storage.txt", { encoding: "utf8", flag: "r" });
     obf = JSON.parse(data);
 } catch(e) {
-    var writeStream = fs.createWriteStream("obf.txt");
+    var writeStream = fs.createWriteStream("storage.txt");
     writeStream.write("{}");
     writeStream.end();
 }
@@ -135,12 +135,12 @@ function parseReq(req, p) {
         if (bi == 2) {
           obj[addr][p] = text == "" ? (p == "bg" ? rimg : "") : text; // fix empty image's url
         }
-        
+
         // set uuid and save
         if (p == "t4") {
           uid = uuid(); 
           obf[uid] = obj[addr]; 
-          obf[uid].ad = addr; fs.writeFileSync("obf.txt", JSON.stringify(obf)); }
+          obf[uid].ad = addr; fs.writeFileSync("storage.txt", JSON.stringify(obf)); }
 
        
       } catch (e) {
