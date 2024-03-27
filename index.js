@@ -130,16 +130,19 @@ function parseReq(req, p) {
         const text = parsedBody.inputText;
         const bi = parsedBody.buttonIndex;
         obj[addr] = obj[addr] ? obj[addr] : {}; // init object
+
+         // continue or done buttons
+        if (bi == 2) {
+          obj[addr][p] = text == "" ? (p == "bg" ? rimg : "") : text; // fix empty image's url
+        }
+        
         // set uuid and save
         if (p == "t4") {
           uid = uuid(); 
           obf[uid] = obj[addr]; 
           obf[uid].ad = addr; fs.writeFileSync("obf.txt", JSON.stringify(obf)); }
 
-        // continue or done buttons
-        if (bi == 2) {
-          obj[addr][p] = text == "" ? (p == "bg" ? rimg : "") : text; // fix empty image's url
-        }
+       
       } catch (e) {
         console.log(e);
       }
