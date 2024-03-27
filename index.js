@@ -12,14 +12,14 @@ var obf = {};
 const sc = "<script src='https://cdn.jsdelivr.net/gh/alekcangp/framer@adbf05c301252433fe6b6dc9bbde3f2d737fcaa1/relaxing.js'></script>";
 const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Access-Control-Allow-Methods": "POST, GET, OPTIONS"';
 
-try {
-    let data = fs.readFileSync("storage.txt", { encoding: "utf8", flag: "r" });
-    obf = JSON.parse(data);
-} catch(e) {
-    var writeStream = fs.createWriteStream("storage.txt");
-    writeStream.write("{}");
-    writeStream.end();
-}
+fs.access("storage.txt", fs.F_OK, (err) => {
+  if (err) {
+    fs.writeFileSync("storage.txt", "{}");
+    return;
+  }
+  let data = fs.readFileSync("storage.txt", { encoding: "utf8", flag: "r" });
+  obf = JSON.parse(data);
+});
 
 
 const server = http.createServer(async (req, res) => {
