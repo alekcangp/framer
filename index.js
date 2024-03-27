@@ -149,30 +149,51 @@ function parseReq(req, p) {
 }
 
 function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4, js,post_url ) {
-  frame = `
+  var i = 1;
+  var f = `
     <html>
        <head>  
             <meta property="og:image" content="${img}">
             <meta property="of:accepts:xmtp" content="2024-02-01">
             <meta property="fc:frame" content="vNext">
-            <meta property="fc:frame:image" content="${img}">
-            <meta property="fc:frame:input:text" content="${text}">
-            <meta property="fc:frame:button:1" content="${l1}">
-            <meta property="fc:frame:button:1:action" content="${a1}">
-            <meta property="fc:frame:button:1:target" content="${post_url}${t1}">
-            <meta property="fc:frame:button:2" content="${l2}">
-            <meta property="fc:frame:button:2:action" content="${a2}">
-            <meta property="fc:frame:button:2:target" content="${post_url}${t2}">
-            <meta property="fc:frame:button:3" content="${l3}">
-            <meta property="fc:frame:button:3:action" content="${a3}">
-            <meta property="fc:frame:button:3:target" content="${post_url}${t3}">
-            <meta property="fc:frame:button:4" content="${l4}">
-            <meta property="fc:frame:button:4:action" content="${a4}">
-            <meta property="fc:frame:button:4:target" content="${post_url}${t4}">
+            <meta property="fc:frame:image" content="${img}">`;
+
+  if (text != "") {
+    f = f + ` <meta property="fc:frame:input:text" content="${text}">`;
+  }
+  if (l1 != "") {
+    f = f + `
+            <meta property="fc:frame:button:${i}" content="${l1}">
+            <meta property="fc:frame:button:${i}:action" content="${a1}">
+            <meta property="fc:frame:button:${i}:target" content="${post_url}${t1}">`;
+    i += 1;
+  }
+  if (l2 != "") {
+    f = f + `
+            <meta property="fc:frame:button:${i}" content="${l2}">
+            <meta property="fc:frame:button:${i}:action" content="${a2}">
+            <meta property="fc:frame:button:${i}:target" content="${post_url}${t2}">`;
+    i += 1;
+  }
+  if (l3 != "") {
+    f = f + `
+            <meta property="fc:frame:button:${i}" content="${l3}">
+            <meta property="fc:frame:button:${i}:action" content="${a3}">
+            <meta property="fc:frame:button:${i}:target" content="${post_url}${t3}">`;
+    i += 1;
+  }
+  if (l4 != "") {
+    f = f + `
+            <meta property="fc:frame:button:${i}" content="${l4}">
+            <meta property="fc:frame:button:${i}:action" content="${a4}">
+            <meta property="fc:frame:button:${i}:target" content="${post_url}${t4}">`;
+  }
+  f = f + `
           </head>
       <body>${js}</body>
     </html>`;
-  return frame;
+
+  return f;
 }
 
 function uuid() {
