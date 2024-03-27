@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const crypto = require('crypto');
 
-const post_url = "https://framer.loophole.site/"
+const url = "https://framer.loophole.site/"
 const img_url = "https://i.imgur.com/oLhw7FR.gif";
 const rimg = "https://source.unsplash.com/random/1000x523"; //random image
 var uid = "";
@@ -10,7 +10,7 @@ var addr = "0x";
 var obj = { "0x": { bg: img_url } };
 var obf = {};
 const sc = "<script src='https://cdn.jsdelivr.net/gh/alekcangp/framer@adbf05c301252433fe6b6dc9bbde3f2d737fcaa1/relaxing.js'></script>";
-const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Cache-Control": "no-cache, no-store, must-revalidate","Access-Control-Allow-Methods": "POST, GET, OPTIONS"';
+const co = '"Content-Type": "text/html","Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept","Access-Control-Allow-Methods": "POST, GET, OPTIONS"';
 
 try {
     let data = fs.readFileSync("obf.txt", { encoding: "utf8", flag: "r" });
@@ -27,76 +27,76 @@ const server = http.createServer(async (req, res) => {
   //Start frame
   if (req.url === "/") {
     res.writeHead(200, { co });
-    const frame = constructor( img_url, "", "Start", "post", "bg", "", "", "", "", "", "", "", "", "", sc, );
+    const frame = constructor( img_url, "", "Start", "post", "bg", "", "", "", "", "", "", "", "", "", sc,url );
     res.end(frame);
 
   // bg url
   } else if (req.url === "/bg") {
     res.writeHead(200, { co });
-    const frame = constructor( img_url, "Enter image's or empty for random", "Back", "post", "", "Continue", "post", "l1", "", "", "", "", "", "", "", );
+    const frame = constructor( img_url, "Enter image's or empty for random", "Back", "post", "", "Continue", "post", "l1", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // label 1
   } else if (req.url === "/l1") {
     await parseReq(req, "bg");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's label 1", "Back", "post", "bg", "Continue", "post", "t1", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's label 1", "Back", "post", "bg", "Continue", "post", "t1", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // target 1
   } else if (req.url === "/t1") {
     await parseReq(req, "l1");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's URL link 1", "Back", "post", "l1", "Continue", "post", "l2", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's URL link 1", "Back", "post", "l1", "Continue", "post", "l2", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // label 2
   } else if (req.url === "/l2") {
     await parseReq(req, "t1");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's label 2", "Back", "post", "t1", "Continue", "post", "t2", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's label 2", "Back", "post", "t1", "Continue", "post", "t2", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // target 2
   } else if (req.url === "/t2") {
     await parseReq(req, "l2");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's URL link 2", "Back", "post", "l2", "Continue", "post", "l3", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's URL link 2", "Back", "post", "l2", "Continue", "post", "l3", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // label 3
   } else if (req.url === "/l3") {
     await parseReq(req, "t2");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's label 3", "Back", "post", "t2", "Continue", "post", "t3", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's label 3", "Back", "post", "t2", "Continue", "post", "t3", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // target 3
   } else if (req.url === "/t3") {
     await parseReq(req, "l3");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's URL link 3", "Back", "post", "l3", "Continue", "post", "l4", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's URL link 3", "Back", "post", "l3", "Continue", "post", "l4", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // label 4
   } else if (req.url === "/l4") {
     await parseReq(req, "t3");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's label 4", "Back", "post", "t3", "Continue", "post", "t4", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's label 4", "Back", "post", "t3", "Continue", "post", "t4", "", "", "", "", "", "", "",url);
     res.end(frame);
 
   // target 4
   } else if (req.url === "/t4") {
     await parseReq(req, "l4");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "Enter button's URL link 4", "Back", "post", "t3", "Done", "post", "do", "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "Enter button's URL link 4", "Back", "post", "t3", "Done", "post", "do", "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // finish frame
   } else if (req.url === "/do") {
     await parseReq(req, "t4");
     res.writeHead(200, { co });
-    const frame = constructor( obj[addr].bg, "", "Restart", "post", "", "Show frame's URL", "link", uid, "", "", "", "", "", "", "", );
+    const frame = constructor( obj[addr].bg, "", "Restart", "post", "", "Show frame's URL", "link", uid, "", "", "", "", "", "", "",url );
     res.end(frame);
 
   // user's frame
@@ -104,7 +104,7 @@ const server = http.createServer(async (req, res) => {
     try {
       let id = req.url.substring(1);
       res.writeHead(200, { co });
-      const frame = constructor( obf[id].bg, "", obf[id].l1, "link", obf[id].t1, obf[id].l2, "link", obf[id].t2, obf[id].l3, "link", obf[id].t3, obf[id].l4, "link", obf[id].t4, sc, );
+      const frame = constructor( obf[id].bg, "", obf[id].l1, "link", obf[id].t1, obf[id].l2, "link", obf[id].t2, obf[id].l3, "link", obf[id].t3, obf[id].l4, "link", obf[id].t4, sc,"" );
       res.end(frame);
     } catch (e) {
       console.log(e);
@@ -148,7 +148,7 @@ function parseReq(req, p) {
   });
 }
 
-function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4, js, ) {
+function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4, js,post_url ) {
   frame = `
     <html>
        <head>  
