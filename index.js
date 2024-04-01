@@ -158,8 +158,10 @@ function constructor( img, text, l1, a1, t1, l2, a2, t2, l3, a3, t3, l4, a4, t4,
   var f = `
     <html>
        <head>  
+            <meta property="og:title" content="Framer">
             <meta property="og:image" content="${img}">
             <meta property="of:accepts:xmtp" content="2024-02-01">
+            <meta name="of:version" content="vNext">
             <meta property="fc:frame" content="vNext">
             <meta property="fc:frame:image" content="${img}">`;
 
